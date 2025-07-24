@@ -22,6 +22,7 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="${root }/resources/css/common.css">
 </head>
 <body>
 	<nav class="navbar navbar-expand bg-info-subtle shadow sticky-top">
