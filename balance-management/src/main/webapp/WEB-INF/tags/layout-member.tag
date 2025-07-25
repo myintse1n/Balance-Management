@@ -35,10 +35,10 @@
 					class="nav-link ${title eq 'BALANCES' ? 'active' : '' }"><i
 						class="bi bi-bar-chart "></i> Balance</a></li>
 				<li class="nav-item"><a href="${root }/member/entry/incomes"
-					class="nav-link ${title eq 'INCOMES' ? 'active' : '' }"><i
+					class="nav-link ${title eq 'incomes' ? 'active' : '' }"><i
 						class="bi bi-flag "></i> Incomes</a></li>
 				<li class="nav-item"><a href="${root }/member/entry/expenses"
-					class="nav-link ${title eq 'EXPENSES' ? 'active' : '' }"><i
+					class="nav-link ${title eq 'expenses' ? 'active' : '' }"><i
 						class="bi-cart "></i> Expenses</a></li>
 				<li class="nav-item"><a href="${root }/member/ledger"
 					class="nav-link ${title eq 'LEDGERS' ? 'active' : '' }"><i

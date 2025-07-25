@@ -3,7 +3,7 @@
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags"%>
 
 <app:layout-member title="${type}">
-	<app:page-title title="${type } Management"></app:page-title>
+	<app:page-title title="${balanceType } Management"></app:page-title>
 
 	<!-- Search Form -->
 	<form class="row mt-3">
