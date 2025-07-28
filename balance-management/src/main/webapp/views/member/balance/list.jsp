@@ -21,7 +21,7 @@
 	</form>
 	
 	<!-- Result Table -->
-	<table class="table table-striped table-bordered table-hover my-3">
+	<table class="table table-striped table-bordered table-hover mb-3">
 		<thead>
 			<tr>
 				<th>Issued At</th>

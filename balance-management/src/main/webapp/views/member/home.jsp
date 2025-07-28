@@ -24,7 +24,7 @@
 					<h5 class="card-title">
 						<i class="bi bi-person me-1"></i>Profile
 					</h5>
-					<a href="${root }/member/entry/incomes"><i class="bi bi-pencil"></i></a>
+					<a href="${root }/member/profile"><i class="bi bi-pencil"></i></a>
 				</div>
 				<div class="card-body p-0">
 					<img src="${root }/resources/images/profile-img.jpg"
@@ -35,13 +35,34 @@
 							Aung</li>
 						<li class="list-group-item"><i class="bi bi-person me-1"></i>070-8950-4055</li>
 						<li class="list-group-item"><i class="bi bi-envelope-at me-1"></i>thidar@gmail.com</li>
+						<li class="list-group-item"><i class="bi bi-map me-1"></i>N0
+							20/1F,Yadanar Myaing Street, Kamayut 1 Quarter, Kamayut, Yangon</li>
+					</ul>
+				</div>
+			</div>
+			<div class="card mt-3">
+				<div
+					class="card-header d-flex justify-content-between align-items-start">
+					<h5 class="card-title">
+						<i class="bi bi-shield me-1"></i>Access
+					</h5>
+					<a href="${root }/member/access" class="btn-link"><i
+						class="bi bi-send me-1"></i></a>
+				</div>
+				<div class="card-body">
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">
+							<div class="fw-bold">Registered At</div> <span>2025-01-01</span>
+						</li>
+						<li class="list-group-item"><div class="fw-bold">Last
+								Access</div> <span>2025-07-28</span></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 
 		<div class="col">
-			<div class="row">
+			<div class="row mb-3">
 				<!-- Summary -->
 				<div class="col">
 					<app:summary-info color="bg-danger" icon="bi-cart" value="100,000"
@@ -56,16 +77,29 @@
 						value="400,000" title="Balances" />
 				</div>
 			</div>
+
 			<!-- Balance Bar Charts -->
-			<div class="card mt-4">
-				
-			</div>
-			<div class="row">
+			<app:chart-card icon="bi-bar-chart" title="Balances"
+				cssId="balanceChart" />
+
+			<div class="row mt-4">
 				<!-- Expenses Pie Chart -->
-				<div class="col"></div>
+				<div class="col">
+					<app:chart-card icon="bi-cart" title="Expenses"
+						cssId="expensePieChart" />
+				</div>
 				<!-- Incomes Pie Chart -->
-				<div class="col"></div>
+				<div class="col">
+					<app:chart-card icon="bi-flag" title="Incomes"
+						cssId="incomePieChart" />
+				</div>
 			</div>
 		</div>
 	</div>
+
+	<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+	<script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+	<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+	<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+	<script src="${root }/resources/js/member-home.js"></script>
 </app:layout-member>

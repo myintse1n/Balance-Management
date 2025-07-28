@@ -20,8 +20,4 @@ public class MemberManagementController {
 		return "management/members/details";
 	}
 	
-	@GetMapping("access")
-	String accessHistory() {
-		return "management/access/list";
-	}
 }

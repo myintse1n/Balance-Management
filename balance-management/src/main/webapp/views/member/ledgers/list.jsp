@@ -31,7 +31,7 @@
 	</form>
 
 	<!-- Result Table -->
-	<table class="table table-striped table-bordered table-hove my-3">
+	<table class="table table-striped table-bordered table-hove mb-3">
 		<thead>
 			<tr>
 				<th>Id</th>
