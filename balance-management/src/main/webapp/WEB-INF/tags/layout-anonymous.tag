@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>BALANCE | ${title.toUpperCase()}</title>
-<c:set var="root" value="${PageContext.request.contextPath }"
+<c:set var="root" value="${pageContext.request.contextPath }"
 	scope="request"></c:set>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"

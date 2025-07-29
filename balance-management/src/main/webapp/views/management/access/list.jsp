@@ -10,8 +10,10 @@
 
 	<form class="row">
 		<app:form-group cssClass="col-auto" label="Status">
-			<select class="form-select">
-				<option value="">Search AllS</option>
+			<select name="status" class="form-select">
+				<option value="">Search All</option>
+				<option value="Success">Success</option>
+				<option value="Fails">Fails</option>
 			</select>
 		</app:form-group>
 
@@ -21,9 +23,9 @@
 		<app:form-group cssClass="col-auto" label="Date To">
 			<input name="dateTo" type="date" class="form-control" />
 		</app:form-group>
-		<app:form-group cssClass="col-auto" label="Name">
-			<input name="name" type="text" class="form-control"
-				placeholder="Enter name" />
+		<app:form-group cssClass="col-auto" label="Keyword">
+			<input name="keyword" type="text" class="form-control"
+				placeholder="Enter keyword" />
 		</app:form-group>
 		<div class="col col-wrapper">
 			<button class="btn btn-primary">

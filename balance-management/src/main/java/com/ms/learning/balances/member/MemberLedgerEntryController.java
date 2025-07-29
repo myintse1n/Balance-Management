@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ms.learning.balances.model.entity.BalanceType;
+import com.ms.learning.balances.model.entity.consts.BalanceType;
 
 @Controller
 @RequestMapping("member/entry")

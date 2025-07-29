@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ms.learning.balances.model.entity.BalanceType;
+import com.ms.learning.balances.model.entity.consts.BalanceType;
 
 @Controller
 @RequestMapping("member/ledger")

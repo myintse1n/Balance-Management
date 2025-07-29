@@ -24,7 +24,7 @@
 						<textarea rows="3" cols="40" class="form-control"
 							placeholder="Please enter particular"></textarea>
 					</app:form-group>
-					<app:form-group label="Total Amount">
+					<app:form-group label="Total Amount" cssClass="">
 						<span class="form-control">100,000</span>
 					</app:form-group>
 				</div>

@@ -1,4 +1,4 @@
-package com.ms.learning.balances.model.entity;
+package com.ms.learning.balances.model.entity.consts;
 
 public enum BalanceType {
 

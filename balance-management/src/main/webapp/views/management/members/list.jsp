@@ -9,7 +9,9 @@
 	<form class="row" id="searchForm">
 		<app:form-group label="status" cssClass="col-auto">
 			<select name="status" class="form-select">
-				<option value="">search all</option>
+				<option value="null">search all</option>
+				<option value="true">Active</option>
+				<option value="false">Denied</option>
 			</select>
 		</app:form-group>
 		<app:form-group label="Registered From" cssClass="col-auto">
