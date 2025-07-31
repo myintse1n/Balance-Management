@@ -1,11 +1,16 @@
 package com.ms.learning.balances.member;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.ms.learning.balances.member.dto.ProfileEditForm;
 
 @Controller
 @RequestMapping("member/profile")
@@ -23,7 +28,15 @@ public class MemberSetttingForProfileController {
 	}
 	
 	@PostMapping
-	String updateProfile() {
+	String updateProfile(
+			ModelMap map,
+			@Validated ProfileEditForm editForm,
+			BindingResult result
+			) {
+		if(result.hasErrors()) {
+			return "member/profile/edit";
+		}
+		
 		return "redirect:/member/home";
 	}
 }

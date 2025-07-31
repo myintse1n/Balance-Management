@@ -25,7 +25,7 @@
 		<thead>
 			<tr>
 				<th>Issued At</th>
-				<th>Category</th>
+				<th>Ledger</th>
 				<th>Particular</th>
 				<th class="text-end">Expenses</th>
 				<th class="text-end">Incomes</th>

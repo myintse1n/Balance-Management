@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import com.ms.learning.balances.model.entity.consts.Gender;
 
 public record MemberDetails(
+		long id,
 		String name,
 		LocalDate dateOfBirth,
 		Gender gender,

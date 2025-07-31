@@ -3,7 +3,7 @@
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags"%>
 
 <app:layout-member title="${type}">
-	<app:page-title title="${balanceType } Management"></app:page-title>
+	<app:page-title title="${type} Management"></app:page-title>
 
 	<!-- Search Form -->
 	<form class="row mt-3">
@@ -12,6 +12,9 @@
 		</app:form-group>
 		<app:form-group cssClass="col-auto" label="Date To">
 			<input name="dateTo" type="date" class="form-control" />
+		</app:form-group>
+		<app:form-group cssClass="col-auto" label="keyword">
+			<input name="keyword" type="text" class="form-control" placeholder="Enter keyword" />
 		</app:form-group>
 		<div class="col-auto col-wrapper">
 			<button class="btn btn-primary ">
@@ -29,7 +32,7 @@
 			<tr>
 				<th>Code</th>
 				<th>Issued At</th>
-				<th>Category</th>
+				<th>Ledger</th>
 				<th>Particular</th>
 				<th class="text-end">Amount</th>
 				<th></th>

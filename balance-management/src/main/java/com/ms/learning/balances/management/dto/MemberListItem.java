@@ -2,7 +2,7 @@ package com.ms.learning.balances.management.dto;
 
 import java.time.LocalDateTime;
 
-public record MemberItem(
+public record MemberListItem(
 		Long id,
 
 		String name,

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ms.learning.balances.management.dto.AccessHistorySearch;
+import com.ms.learning.balances.member.dto.AccessHistorySearch;
 
 @Controller("AdminMemberAccessController")
 @RequestMapping("admin/member/access")

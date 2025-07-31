@@ -1,4 +1,4 @@
-package com.ms.learning.balances.management.dto;
+package com.ms.learning.balances.member.dto;
 
 import java.time.LocalDateTime;
 
