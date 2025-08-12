@@ -33,7 +33,7 @@
 					<ul class="list-group rounded-0">
 						<li class="list-group-item"><i class="bi bi-person me-1"></i>Thidar
 							Aung</li>
-						<li class="list-group-item"><i class="bi bi-person me-1"></i>070-8950-4055</li>
+						<li class="list-group-item"><i class="bi bi-phone me-1"></i>070-8950-4055</li>
 						<li class="list-group-item"><i class="bi bi-envelope-at me-1"></i>thidar@gmail.com</li>
 						<li class="list-group-item"><i class="bi bi-map me-1"></i>N0
 							20/1F,Yadanar Myaing Street, Kamayut 1 Quarter, Kamayut, Yangon</li>
@@ -52,10 +52,10 @@
 				<div class="card-body">
 					<ul class="list-group list-group-flush">
 						<li class="list-group-item">
-							<div class="fw-bold">Registered At</div> <span>2025-01-01</span>
+							<div class="fw-bold">Registered At</div> <span>2025-01-01 10:00</span>
 						</li>
 						<li class="list-group-item"><div class="fw-bold">Last
-								Access</div> <span>2025-07-28</span></li>
+								Access</div> <span>2025-07-28 12:00</span></li>
 					</ul>
 				</div>
 			</div>
