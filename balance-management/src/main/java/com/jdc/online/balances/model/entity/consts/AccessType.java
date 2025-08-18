@@ -1,7 +1,7 @@
 package com.jdc.online.balances.model.entity.consts;
 
 public enum AccessType {
-	Login, Logout, Singup{
+	Login, Logout, Signup{
 		@Override
 		public String dispalyName() {
 			return "Sign Up";

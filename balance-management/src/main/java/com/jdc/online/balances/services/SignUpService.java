@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.jdc.online.balances.anonymous.dto.SignUpForm;
+import com.jdc.online.balances.controller.anonymous.dto.SignUpForm;
 import com.jdc.online.balances.model.entity.Account;
 import com.jdc.online.balances.model.entity.Member;
 import com.jdc.online.balances.model.entity.MemberActivity;

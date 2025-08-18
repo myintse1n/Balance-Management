@@ -15,18 +15,21 @@
 			</div>
 		</c:if>
 
-		<sf:form modelAttribute="form" action="${root }/signup" method="post">
+		<sf:form action="${root }/signup" modelAttribute="form"  method="post">
 			<app:form-group label="Enter member name" cssClass="mt-3">
-				<sf:input path="name" name="name" type="text" placeholder="Enter member name"
+				<sf:input path="name"  type="text" placeholder="Enter member name"
 					class="form-control" />
+				<sf:errors path="name" cssClass="text-danger"></sf:errors>
 			</app:form-group>
 			<app:form-group label="Login ID" cssClass="mt-3">
-				<sf:input path="userName" name="username" type="text" placeholder="Enter login id"
+				<sf:input path="userName" type="text" placeholder="Enter login mail"
 					class="form-control" />
+				<sf:errors path="userName" cssClass="text-danger"></sf:errors>
 			</app:form-group>
 			<app:form-group label="Password" cssClass="mt-3">
-				<sf:input path="password"  name="password" type="text" placeholder="Enter password"
+				<sf:input path="password"   type="password" placeholder="Enter password"
 					class="form-control" />
+				<sf:errors path="password" cssClass="text-danger"></sf:errors>
 			</app:form-group>
 			<div class="mt-3">
 				<a href="${root }/signin" class="btn btn-outline-primary"><i class="bi-unlock me-2"></i>Sign

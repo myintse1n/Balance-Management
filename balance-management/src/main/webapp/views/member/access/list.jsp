@@ -22,6 +22,9 @@
 		<app:form-group cssClass="col-auto" label="Date To">
 			<input type="date" class="form-control" />
 		</app:form-group>
+		<app:form-group cssClass="col-auto" label="Keyword">
+			<input type="text"  class="form-control" placeholder="Enter keyword"/>
+		</app:form-group>
 		<div class="col-wrapper col-auto">
 			<button class="btn btn-primary ">Search</button>
 		</div>
