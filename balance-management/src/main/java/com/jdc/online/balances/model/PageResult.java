@@ -8,5 +8,6 @@ public record PageResult<T> (
 		int size,
 		int page
 		){
-
+	
+	
 }

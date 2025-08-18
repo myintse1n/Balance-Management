@@ -1,7 +1,7 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
-
+<%@ taglib prefix="app" tagdir="/WEB-INF/tags" %>
 <%@ attribute name="title" required="true"%>
 
 <!DOCTYPE html>
@@ -36,12 +36,12 @@
 				<li class="nav-item"><a href="${root }/admin/member"
 					class="nav-link ${title eq 'MEMBERS' ? 'active' : '' }"><i
 						class="bi-people me-1"></i>Members</a></li>
-				<li class="nav-item"><a href="${root }/signin" class="nav-link"><i
+				<li class="nav-item"><a href="#" id="signOutMenu" class="nav-link"><i
 						class="bi-unlock me-1"></i>Sign Out</a></li>
 			</ul>
 		</div>
 	</nav>
 	<main class="container my-4"><jsp:doBody /></main>
-
+	<app:sign-out/>
 </body>
 </html>

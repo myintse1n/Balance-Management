@@ -20,7 +20,7 @@ public class WebSecurityConfig  {
 		
 		//Request Authorization
 		http.authorizeHttpRequests(req -> {
-			req.requestMatchers("/","/signup","/signup").permitAll();
+			req.requestMatchers("/","/signup","/signin","/resources/**").permitAll();
 			req.requestMatchers("/admin/**").hasAuthority(Role.Admin.name());
 			req.requestMatchers("/member/**").hasAuthority(Role.Member.name());
 			req.anyRequest().authenticated();
@@ -34,7 +34,7 @@ public class WebSecurityConfig  {
 		
 		//Logout Form
 		http.logout(logout->{
-			logout.logoutUrl("/singout");
+			logout.logoutUrl("/signout");
 			logout.logoutSuccessUrl("/");
 		});
 		

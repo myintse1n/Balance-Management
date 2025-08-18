@@ -22,7 +22,7 @@ public class ApplicationUserDetailsService implements UserDetailsService{
 		return accountRepo.findById(username)
 				.map(account -> User.withUsername(username)
 						.password(account.getPassword())
-						.roles(account.getRole().name())
+						.authorities(account.getRole().name())
 						.disabled(!account.isActive())
 				.build())
 				.orElseThrow(()-> new UsernameNotFoundException("Invalid Login ID"));
