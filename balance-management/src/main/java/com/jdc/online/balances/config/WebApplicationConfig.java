@@ -4,7 +4,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import com.jdc.online.balances.utils.BalanceTypeConverter;
+
+import com.jdc.online.balances.utils.converter.BalanceTypeConverter;
 
 @Configuration
 public class WebApplicationConfig implements WebMvcConfigurer {

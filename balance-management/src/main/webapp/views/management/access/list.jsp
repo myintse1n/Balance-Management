@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags"%>
 
 <app:layout-management title="ACCESS">
@@ -12,20 +12,20 @@
 		<app:form-group cssClass="col-auto" label="Status">
 			<select name="status" class="form-select">
 				<option value="">Search All</option>
-				<option value="Success">Success</option>
-				<option value="Fails">Fails</option>
+				<option value="Success" ${param.status eq 'Success' ? 'selected' : '' }>Success</option>
+				<option value="Fails" ${param.status eq 'Fails' ? 'selected' : '' }>Fails</option>
 			</select>
 		</app:form-group>
 
 		<app:form-group cssClass="col-auto" label="Date From">
-			<input name="dateFrom" type="date" class="form-control" />
+			<input name="dateFrom" type="date" class="form-control"  value = "${param.dateFrom }"/>
 		</app:form-group>
 		<app:form-group cssClass="col-auto" label="Date To">
-			<input name="dateTo" type="date" class="form-control" />
+			<input name="dateTo" type="date" class="form-control" value= "${param.dateTo }" />
 		</app:form-group>
 		<app:form-group cssClass="col-auto" label="Keyword">
 			<input name="keyword" type="text" class="form-control"
-				placeholder="Enter keyword" />
+				placeholder="Enter keyword"  value="${param.keyword }"/>
 		</app:form-group>
 		<div class="col col-wrapper">
 			<button class="btn btn-primary">
@@ -46,13 +46,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>Aung Aung</td>
-				<td>2025-07-25</td>
-				<td></td>
-				<td>Active</td>
-				<td></td>
-			</tr>
+			<c:forEach items="${result}" var="item">
+				<tr>
+					<td>${item.member() }</td>
+					<td>${dtf.format(item.accessedAt()) }</td>
+					<td>${item.accessType() }</td>
+					<td>${item.status() }</td>
+					<td>${item.remark() }</td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 	

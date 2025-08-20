@@ -1,6 +1,7 @@
 package com.jdc.online.balances.services;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.function.Function;
 
 import org.springframework.stereotype.Service;
@@ -10,9 +11,11 @@ import com.jdc.online.balances.controller.member.dto.AccessHistoryListItem;
 import com.jdc.online.balances.controller.member.dto.AccessHistorySearch;
 import com.jdc.online.balances.model.PageResult;
 import com.jdc.online.balances.model.entity.AccessHistory;
+import com.jdc.online.balances.model.entity.AccessHistory_;
 import com.jdc.online.balances.model.entity.consts.AccessStatus;
 import com.jdc.online.balances.model.entity.consts.AccessType;
 import com.jdc.online.balances.model.entity.embeddables.AccessHistoryPk;
+import com.jdc.online.balances.model.entity.embeddables.AccessHistoryPk_;
 import com.jdc.online.balances.model.repo.AccessHistoryRepo;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -46,11 +49,11 @@ public class AccessHistoryService {
 	}
 	
 	@Transactional(readOnly = true)
-	public PageResult<AccessHistoryListItem> search(
+	public List<AccessHistoryListItem> search(
 			AccessHistorySearch searchForm,
 			int page, 
 			int size) {
-		return accessHistoryRepo.search(queryFunc(searchForm), count(searchForm), page, size);
+		return accessHistoryRepo.search(queryFunc(searchForm), count(searchForm), page, size).contents();
 	}
 	
 	private Function<CriteriaBuilder, CriteriaQuery<AccessHistoryListItem>> queryFunc(AccessHistorySearch searchForm) {
@@ -59,14 +62,22 @@ public class AccessHistoryService {
 				var root = cq.from(AccessHistory.class);
 				
 				AccessHistoryListItem.select(cq,root);
+				cq.where(searchForm.where(cb, root));
+				cq.orderBy(cb.desc(root.get(AccessHistory_.id).get(AccessHistoryPk_.ACCESS_AT)));
 				
 				return cq;
 		};
 	}
 	
 	private Function<CriteriaBuilder, CriteriaQuery<Long>> count(AccessHistorySearch searchForm) {
-		// TODO Auto-generated method stub
-		return null;
+		return cb->{
+			var cq = cb.createQuery(Long.class);
+			var root = cq.from(AccessHistory.class);
+			
+			cq.select(cb.count(root.get(AccessHistory_.id)));
+			cq.where(searchForm.where(cb, root));
+			return cq;
+		};
 	}
 
 	private void createHistory(String username, AccessType type, AccessStatus status) {

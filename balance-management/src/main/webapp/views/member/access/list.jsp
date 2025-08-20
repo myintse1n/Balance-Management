@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags"%>
 
 <app:layout-member title="ACCESS">
@@ -10,20 +10,20 @@
 	<!-- Search Form -->
 	<form class="row">
 		<app:form-group label="Status" cssClass="col-auto">
-			<select name="" id="" class="form-select">
-				<option value="Search All">Search All</option>
-				<option value="Success">Success</option>
-				<option value="Fails">Fails</option>
+			<select name="status" id="" class="form-select">
+				<option value="">Search All</option>
+				<option value="Success" ${param.status eq 'Success' ? 'selected' : '' }>Success</option>
+				<option value="Fails" ${param.status eq 'Fails' ? 'selected' : '' }>Fails</option>
 			</select>
 		</app:form-group>
 		<app:form-group label="Date From" cssClass="col-auto">
-			<input type="date" class="form-control" />
+			<input name="dateFrom" type="date" class="form-control" value="${param.dateFrom }" />
 		</app:form-group>
 		<app:form-group cssClass="col-auto" label="Date To">
-			<input type="date" class="form-control" />
+			<input name="dateTo" type="date" class="form-control" value="${param.dateTo }" />
 		</app:form-group>
 		<app:form-group cssClass="col-auto" label="Keyword">
-			<input type="text"  class="form-control" placeholder="Enter keyword"/>
+			<input name="keyword" type="text"  class="form-control" value="${param.keyword }" placeholder="Enter keyword"/>
 		</app:form-group>
 		<div class="col-wrapper col-auto">
 			<button class="btn btn-primary ">Search</button>
@@ -41,12 +41,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>2025-04-01</td>
-				<td>Login</td>
-				<td>Fails</td>
-				<td>Wrong Password</td>
-			</tr>
+			<c:forEach items="${result }" var="item">
+				<tr>
+					<td>${dtf.format(item.accessedAt())}</td>
+					<td>${item.accessType() }</td>
+					<td>${item.status() }</td>
+					<td>${item.remark() }</td>
+				</tr>			
+			</c:forEach>
 		</tbody>
 	</table>
 	

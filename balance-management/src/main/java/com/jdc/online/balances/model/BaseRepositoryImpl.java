@@ -22,27 +22,40 @@ public class BaseRepositoryImpl<T, ID> extends SimpleJpaRepository<T, ID> implem
 
 	@Override
 	public <R> List<R> search(Function<CriteriaBuilder, CriteriaQuery<R>> queryFunc) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery(queryFunc.apply(em.getCriteriaBuilder())).getResultList();
 	}
 
 	@Override
 	public <R> PageResult<R> search(Function<CriteriaBuilder, CriteriaQuery<R>> queryFunc,
 			Function<CriteriaBuilder, CriteriaQuery<Long>> countFunc, int page, int size) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		var count = count(countFunc);
+		
+		var jpaQuery = em.createQuery(queryFunc.apply(em.getCriteriaBuilder()));
+		
+		var lists  = jpaQuery.getResultList();
+		
+		jpaQuery.setMaxResults(size);
+		jpaQuery.setFirstResult(size * page);
+		
+		PageResult.Builder<R> builder = new PageResult.Builder<R>();
+		
+		return builder
+				.contents(lists)
+				.count(count)
+				.size(size)
+				.page(page)
+				.build();
 	}
 
 	@Override
 	public <R> Optional<R> searchOne(Function<CriteriaBuilder, CriteriaQuery<R>> queryFucn) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+		return em.createQuery(queryFucn.apply(em.getCriteriaBuilder())).getResultList().stream().findAny();
 	}
 
 	@Override
 	public Long count(Function<CriteriaBuilder, CriteriaQuery<Long>> queryFunc) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery(queryFunc.apply(em.getCriteriaBuilder())).getSingleResult();
 	}
 
 }
