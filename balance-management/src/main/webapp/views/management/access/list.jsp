@@ -8,7 +8,11 @@
 
 	<!-- Form Search -->
 
-	<form class="row">
+	<form class="row" id="pageSearchForm">
+		
+		<input type="hidden" name="page" id="pageInput" />
+		<input type="hidden" name="size" id="sizeInput"/>
+	
 		<app:form-group cssClass="col-auto" label="Status">
 			<select name="status" class="form-select">
 				<option value="">Search All</option>
@@ -46,7 +50,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${result}" var="item">
+			<c:forEach items="${result.contents()}" var="item">
 				<tr>
 					<td>${item.member() }</td>
 					<td>${dtf.format(item.accessedAt()) }</td>
@@ -59,6 +63,6 @@
 	</table>
 	
 	<!-- Pagination -->
-	<app:pagination/>
+	<app:pagination pageResult="${result }"/>
 
 </app:layout-management>

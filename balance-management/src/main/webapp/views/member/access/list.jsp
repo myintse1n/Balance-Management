@@ -8,7 +8,11 @@
 	<app:page-title title="Access History"></app:page-title>
 
 	<!-- Search Form -->
-	<form class="row">
+	<form class="row" id="pageSearchForm">
+	
+		<input type="hidden" name="page" id="pageInput"/>
+		<input type="hidden" name="size" id="sizeInput" />
+	
 		<app:form-group label="Status" cssClass="col-auto">
 			<select name="status" id="" class="form-select">
 				<option value="">Search All</option>
@@ -41,7 +45,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${result }" var="item">
+			<c:forEach items="${result.contents() }" var="item">
 				<tr>
 					<td>${dtf.format(item.accessedAt())}</td>
 					<td>${item.accessType() }</td>
@@ -53,6 +57,6 @@
 	</table>
 	
 	<!-- Pagination -->
-	<app:pagination/>
+	<app:pagination pageResult="${result }"/>
 
 </app:layout-member>

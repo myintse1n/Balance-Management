@@ -19,6 +19,8 @@ import lombok.Data;
 @Data
 public class AccessHistorySearch {
 	
+	private String username;
+	
 	private AccessStatus status;
 	
 	private LocalDate dateFrom;
@@ -30,6 +32,9 @@ public class AccessHistorySearch {
 	public Predicate[] where(CriteriaBuilder cb, Root<AccessHistory> root) {
 		var params = new ArrayList<Predicate>();
 		
+		if(StringUtils.hasLength(username)) {
+			params.add(cb.equal(root.get(AccessHistory_.id).get(AccessHistoryPk_.username), username));
+		}
 		
 		if(null != status) {
 			params.add(cb.equal(root.get(AccessHistory_.status), status));

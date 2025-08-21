@@ -1,7 +1,6 @@
 package com.jdc.online.balances.services;
 
 import java.time.Instant;
-import java.util.List;
 import java.util.function.Function;
 
 import org.springframework.stereotype.Service;
@@ -49,11 +48,11 @@ public class AccessHistoryService {
 	}
 	
 	@Transactional(readOnly = true)
-	public List<AccessHistoryListItem> search(
+	public PageResult<AccessHistoryListItem> search(
 			AccessHistorySearch searchForm,
 			int page, 
 			int size) {
-		return accessHistoryRepo.search(queryFunc(searchForm), count(searchForm), page, size).contents();
+		return accessHistoryRepo.search(queryFunc(searchForm), count(searchForm), page, size);
 	}
 	
 	private Function<CriteriaBuilder, CriteriaQuery<AccessHistoryListItem>> queryFunc(AccessHistorySearch searchForm) {
