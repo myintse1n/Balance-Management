@@ -23,7 +23,7 @@ public class MemberLedgerController {
 			ModelMap model,
 			LedgerSearch search,
 			@RequestParam(required = false, defaultValue = "0") int page,
-			@RequestParam(required = false, defaultValue = "10") int size) {
+			@RequestParam(required = false, defaultValue = "5") int size) {
 		
 		//add ledger search logic
 		

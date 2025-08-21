@@ -33,10 +33,10 @@ public class BaseRepositoryImpl<T, ID> extends SimpleJpaRepository<T, ID> implem
 		
 		var jpaQuery = em.createQuery(queryFunc.apply(em.getCriteriaBuilder()));
 		
-		var lists  = jpaQuery.getResultList();
-		
 		jpaQuery.setMaxResults(size);
 		jpaQuery.setFirstResult(size * page);
+		var lists  = jpaQuery.getResultList();
+		
 		
 		PageResult.Builder<R> builder = new PageResult.Builder<R>();
 		

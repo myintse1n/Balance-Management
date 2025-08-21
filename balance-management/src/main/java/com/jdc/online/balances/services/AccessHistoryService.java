@@ -44,7 +44,7 @@ public class AccessHistoryService {
 
 	@Transactional
 	public void loginFailures(String username, String message) {
-		createHistory(username,AccessType.Login,AccessStatus.Fails);
+		createHistory(username,AccessType.Login,AccessStatus.Fails,message);
 	}
 	
 	@Transactional(readOnly = true)

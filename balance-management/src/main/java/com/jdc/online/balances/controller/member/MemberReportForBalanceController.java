@@ -18,7 +18,7 @@ public class MemberReportForBalanceController {
 			ModelMap model,
 			BalanceSearch search,
 			@RequestParam(required = false, defaultValue = "0") int page, 
-			@RequestParam(required = false, defaultValue = "10") int size
+			@RequestParam(required = false, defaultValue = "5") int size
 			) {
 		return "member/balance/list";
 	}

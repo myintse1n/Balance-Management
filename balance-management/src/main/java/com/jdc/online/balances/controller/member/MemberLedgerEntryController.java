@@ -24,7 +24,7 @@ public class MemberLedgerEntryController {
 			ModelMap model,
 			LedgerEntrySearch search,
 			@RequestParam(required = false, defaultValue = "0") int page, 
-			@RequestParam(required = false, defaultValue = "10") int size
+			@RequestParam(required = false, defaultValue = "5") int size
 			) {
 		model.put("type", type);
 		return "member/entries/list";

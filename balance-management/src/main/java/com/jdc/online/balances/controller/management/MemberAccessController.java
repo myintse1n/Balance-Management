@@ -23,7 +23,7 @@ public class MemberAccessController {
 			ModelMap model,
 			AccessHistorySearch searchForm,
 			@RequestParam(required = false, defaultValue = "0") int page,
-			@RequestParam(required = false, defaultValue = "10") int size) {
+			@RequestParam(required = false, defaultValue = "5") int size) {
 		
 		var result = service.search(searchForm, page , size);
 		model.put("result", result);
