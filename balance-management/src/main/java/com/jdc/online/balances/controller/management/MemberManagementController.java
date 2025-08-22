@@ -12,36 +12,54 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jdc.online.balances.controller.management.dto.MemberSearch;
 import com.jdc.online.balances.controller.management.dto.MemberStatusForm;
+import com.jdc.online.balances.services.MemberManagementService;
+
+import lombok.RequiredArgsConstructor;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("admin/member")
 public class MemberManagementController {
+	
+	private final MemberManagementService service;
 
 	@GetMapping
-	public String index(ModelMap model, MemberSearch search,
+	public String index(
+			ModelMap model,
+			MemberSearch search,
 			@RequestParam(required = false, defaultValue = "0") int page,
 			@RequestParam(required = false, defaultValue = "5") int size) {
-		// business logic
+		
+		var result = service.search(search,page,size);
+		model.put("result", result);
+		
 		return "management/members/list";
 	}
 
 	@GetMapping("{id}")
-	public String showDetails(@PathVariable int id, ModelMap model) {
-		//business Logic
+	public String showDetails(@PathVariable long id, ModelMap model) {
+		
+		var result = service.findById(id);
+		model.put("result", result);
+		
 		return "management/members/details";
 	}
 
 	@PostMapping("{id}/update")
 	public String updateStatus(
-			@PathVariable int id,
+			@PathVariable long id,
 			ModelMap model,
 			@Validated MemberStatusForm statusForm,
 			BindingResult result) {
 		
 		if(result.hasErrors()) {
-			//show member details before error occurs
+			var details = service.findById(id);
+			model.put("result", details);
+			
 			return "management/members/details";
 		}
+		
+		service.updateStatus(id,statusForm);
 		
 		return "redirect:/admin/member/%d".formatted(id);
 	}

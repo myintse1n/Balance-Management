@@ -12,9 +12,9 @@
 			
 			<select id="sizeSelect"
 				class="form-select">
-				<option value="5"  ${pageResult.size() eq '5' ? 'selected' : '' }>5</option>
-				<option value="10" ${pageResult.size() eq '10' ? 'selected' : '' }>10</option>
-				<option value="25" ${pageResult.size() eq '25' ? 'selected' : '' }>25</option>
+				<option value="5"  ${param.size eq '5' ? 'selected' : '' }>5</option>
+				<option value="10" ${param.size eq '10' ? 'selected' : '' }>10</option>
+				<option value="25" ${param.size eq '25' ? 'selected' : '' }>25</option>
 			</select>
 		</div>
 

@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 			Array.from(document.getElementsByClassName('pageLink')).forEach(pageLink => {
 				pageLink.addEventListener('click', (event) => {
 					event.preventDefault()
-					console.log(pageLink.dataset)
 					pageInput.value = pageLink.dataset['pageNumber']
+					sizeInput.value = sizeSelect.value
 					pageSearchForm.submit()
 				})
 			})	

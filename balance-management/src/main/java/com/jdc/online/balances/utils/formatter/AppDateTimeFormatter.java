@@ -13,4 +13,8 @@ public class AppDateTimeFormatter {
 		var dateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
 		return dateTime.format(DTF);
 	}
+	
+	public static String format(LocalDateTime dateTime) {
+		return dateTime.format(DTF);
+	}
 }

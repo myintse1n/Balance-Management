@@ -7,6 +7,7 @@ import lombok.Data;
 public class MemberStatusForm {
 	
 	@NotNull(message = "Please select status.")
-	boolean status;
-	String reason;
+	private Boolean status;
+	
+	private String reason;
 }
