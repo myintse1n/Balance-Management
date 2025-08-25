@@ -20,14 +20,14 @@
 			</select>
 		</app:form-group>
 		<app:form-group label="Registered From" cssClass="col-auto">
-			<input name="dateFrom" type="date" class="form-control" />
+			<input name="dateFrom" type="date" class="form-control" value="${param.dateFrom }" />
 		</app:form-group>
 		<app:form-group label="Registered To" cssClass="col-auto">
-			<input name="dateTo" type="date" class="form-control" />
+			<input name="dateTo" type="date" class="form-control" value="${param.dateTo }"/>
 		</app:form-group>
 		<app:form-group label="Keyword" cssClass="col-auto">
 			<input type="text" name="keyword" placeholder="Enter keyword"
-				class="form-control" />
+				class="form-control" value="${param.keyword }"/>
 		</app:form-group>
 		<div class="col col-wrapper">
 			<button class="btn btn-primary">
@@ -40,7 +40,6 @@
 	<table class="table table-bordered table-striped table-hover my-3">
 		<thead>
 			<tr>
-				<th>Id</th>
 				<th>Name</th>
 				<th>Registered At</th>
 				<th>Last Login</th>
@@ -54,7 +53,6 @@
 		
 			<c:forEach items="${result.contents() }" var="item">
 				<tr>
-					<td>${item.id() }</td>
 					<td>${item.name() }</td>
 					<td>${dtf.format(item.registeredAt())}</td>
 					<td>${dtf.format(item.lastLoginAt())}</td>

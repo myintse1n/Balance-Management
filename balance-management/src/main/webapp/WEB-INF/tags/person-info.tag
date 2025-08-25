@@ -2,7 +2,7 @@
 
 <%@ attribute name="name" required="true"%>
 <%@ attribute name="dateOfBirth" required="true"%>
-<%@ attribute name="gender" required="true"%>
+<%@ attribute name="gender" type="com.jdc.online.balances.model.entity.consts.Gender"%>
 
 <div class="col">
 	<div class="card text-bg-light">
@@ -13,7 +13,7 @@
 
 			<div class="mb-3">
 				<span class="text-secondary">Name</span>
-				<div>${name }</div>
+				<div>${result.name() }</div>
 			</div>
 			
 			<div class="mb-3">

@@ -58,7 +58,7 @@ public class MemberManagementService {
 			
 			MemberListItem.select(cq,root);
 			cq.where(search.where(cb,root));
-			cq.orderBy(cb.asc(root.get(Member_.activity).get(MemberActivity_.id)));
+			cq.orderBy(cb.desc(root.get(Member_.activity).get(MemberActivity_.lastAccessAt)));
 			return cq;
 		};
 	}

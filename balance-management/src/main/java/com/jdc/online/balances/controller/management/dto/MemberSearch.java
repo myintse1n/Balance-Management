@@ -29,7 +29,15 @@ public class MemberSearch {
 		var params = new ArrayList<Predicate>();
 		
 		if(StringUtils.hasLength(keyword)) {
-			params.add(cb.like(root.get(Member_.activity).get(MemberActivity_.statusChangeReason), keyword.toLowerCase().concat("%")));
+			String value = keyword.toLowerCase().concat("%");
+			params.add(
+					cb.or(
+						cb.like(
+								cb.lower(root.get(Member_.activity).get(MemberActivity_.statusChangeReason)), value),
+						cb.like(
+								cb.lower(root.get(Member_.name)),value ))
+					);
+			
 		}
 			
 		if(null != status) {
@@ -43,7 +51,7 @@ public class MemberSearch {
 		
 		if(null != dateTo) {
 			params.add(cb.lessThan(root.get(Member_.activity)
-					.get(MemberActivity_.registeredAt), dateFrom.plusDays(1).atStartOfDay()));
+					.get(MemberActivity_.registeredAt), dateTo.plusDays(1).atStartOfDay()));
 		}
 	
 		return params.toArray(size -> new Predicate[size]);

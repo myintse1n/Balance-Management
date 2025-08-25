@@ -3,6 +3,8 @@ package com.jdc.online.balances.controller.management.dto;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import org.springframework.util.StringUtils;
+
 import com.jdc.online.balances.model.entity.Member;
 import com.jdc.online.balances.model.entity.consts.Gender;
 import com.jdc.online.balances.model.entity.consts.MemberStatus;
@@ -21,6 +23,14 @@ public record MemberDetails(
 		LocalDateTime registeredAt,
 		LocalDateTime lastAccessAt
 		) {
+	
+	public String getDisplayAddress() {
+		 return String.join(", ",
+			        java.util.stream.Stream.of(address, township, region)
+			            .filter(StringUtils::hasText) // keep only non-empty
+			            .toList()
+			    );
+	}
 	
 	public static MemberDetails from(Member member) {
 	    return MemberDetails.builder()
