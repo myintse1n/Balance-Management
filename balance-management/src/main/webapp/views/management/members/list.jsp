@@ -36,38 +36,49 @@
 		</div>
 	</form>
 
-	<!-- Result Table -->
-	<table class="table table-bordered table-striped table-hover my-3">
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Registered At</th>
-				<th>Last Login</th>
-				<th>Status</th>
-				<th>Change at</th>
-				<th>Remark</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-		
-			<c:forEach items="${result.contents() }" var="item">
-				<tr>
-					<td>${item.name() }</td>
-					<td>${dtf.format(item.registeredAt())}</td>
-					<td>${dtf.format(item.lastLoginAt())}</td>
-					<td>${item.status() }</td>
-					<td>${item.changedAt() }</td>
-					<td>${item.remark() }</td>
-					<td class="text-center">
-						<a href="${root }/admin/member/${item.id() }"><i class="bi-arrow-right"></i></a>
-					</td>
-				</tr>
-			</c:forEach>			
-		</tbody>
-	</table>
+	<c:choose>
+		<c:when test="${not empty result.contents() }">
+			<!-- Result Table -->
+			<table class="table table-bordered table-striped table-hover my-3">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Registered At</th>
+						<th>Last Login</th>
+						<th>Status</th>
+						<th>Change at</th>
+						<th>Remark</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<c:forEach items="${result.contents() }" var="item">
+						<tr>
+							<td>${item.name() }</td>
+							<td>${dtf.format(item.registeredAt())}</td>
+							<td>${dtf.format(item.lastLoginAt())}</td>
+							<td>${item.status() }</td>
+							<td>${item.changedAt() ne null ?  dtf.formatShort(item.changedAt()) : null }</td>
+							<td>${item.remark() }</td>
+							<td class="text-center"><a
+								href="${root }/admin/member/${item.id() }"><i
+									class="bi-arrow-right"></i></a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 
 
-	<!-- Pagination -->
-	<app:pagination pageResult="${result }"/>
+			<!-- Pagination -->
+			<app:pagination pageResult="${result }" />
+		</c:when>
+		<c:otherwise>
+			<div class="d-flex justify-content-center my-3">
+				<div class=" p-2 text-center noFoundResult">
+					No results found</div>
+			</div>
+		</c:otherwise>
+	</c:choose>
+
 </app:layout-management>

@@ -37,32 +37,43 @@
 			</button>
 		</div>
 	</form>
+	<c:choose>
+		<c:when test="${not empty result.contents() }">
+			<!-- Access Information Result Table  -->
+			<table class="table table-striped table-bordered table-hover mt-3">
+				<thead>
+					<tr>
+						<th>Member</th>
+						<th>Access At</th>
+						<th>Access Type</th>
+						<th>Status</th>
+						<th>Remark</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${result.contents()}" var="item">
+						<tr>
+							<td>${item.member() }</td>
+							<td>${dtf.format(item.accessedAt()) }</td>
+							<td>${item.accessType() }</td>
+							<td>${item.status() }</td>
+							<td>${item.remark() }</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 
-	<!-- Access Information Result Table  -->
-	<table class="table table-striped table-bordered table-hover mt-3">
-		<thead>
-			<tr>
-				<th>Member</th>
-				<th>Access At</th>
-				<th>Access Type</th>
-				<th>Status</th>
-				<th>Remark</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${result.contents()}" var="item">
-				<tr>
-					<td>${item.member() }</td>
-					<td>${dtf.format(item.accessedAt()) }</td>
-					<td>${item.accessType() }</td>
-					<td>${item.status() }</td>
-					<td>${item.remark() }</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	
-	<!-- Pagination -->
-	<app:pagination pageResult="${result }"/>
+			<!-- Pagination -->
+			<app:pagination pageResult="${result }" />
+		</c:when>
+		<c:otherwise>
+			<div class="d-flex justify-content-center my-3">
+				<div class="p-2 text-center noFoundResult">
+					No results found
+				</div>
+			</div>
+		</c:otherwise>
+	</c:choose>
+
 
 </app:layout-management>

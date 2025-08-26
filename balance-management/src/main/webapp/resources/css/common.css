@@ -16,6 +16,11 @@
 	object-position: top;
 }
 
+.noFoundResult{
+	display: inline-block;
+	 border-radius: 0.5rem;
+}
+
 #balanceChart {
 	width: 100%;
 	height: 500px;

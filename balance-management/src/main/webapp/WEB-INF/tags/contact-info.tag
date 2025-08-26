@@ -5,7 +5,7 @@
 <%@ attribute name="address" required="true"%>
 
 <div class="col">
-	<div class="card text-bg-light">
+	<div class="card  h-100">
 		<div class="card-body">
 			<h5>
 				<i class="bi bi-telephone me-1"></i>Contact Info
@@ -13,17 +13,17 @@
 
 			<div class="mb-3">
 				<span class="text-secondary">Phone</span>
-				<div>${phone }</div>
+				<div>${phone ne null and phone ne '' ? phone : 'Un Defined' }</div>
 			</div>
 			
 			<div class="mb-3">
 				<span class="text-secondary">Email</span>
-				<div>${email }</div>
+				<div>${email}</div>
 			</div>
 			
 			<div class="mb-3">
 				<span class="text-secondary">Address</span>
-				<div>${address }</div>
+				<div>${address ne null and address ne '' ? address : 'Un Defined'}</div>
 			</div>
 		</div>
 	</div>
