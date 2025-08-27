@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 
 <app:layout-member title="PROFILE">
 
@@ -24,67 +25,77 @@
 		</div>
 
 		<div class="col-9">
-			<form action="${root }/member/profile" method="post">
+			<sf:form action="${root }/member/profile" modelAttribute="form"  method="post">
 				<!-- Personal Info -->
 				<!-- Name -->
 				<app:form-group cssClass="col-6" label="Name">
-					<input type="text" placeholder="Enter name" class="form-control" />
+					<sf:input type="text" path="name" placeholder="Enter name" class="form-control" />
+					<sf:errors path="name" cssClass="text-danger"></sf:errors>
 				</app:form-group>
 
 				<div class="row">
 					<!-- Gender -->
 					<app:form-group cssClass="col-4" label="Gender">
-						<select name="" id="" class="form-select">
+						<sf:select path="gender" class="form-select">
+							<option value="">Select Gender</option>
 							<option value="Male">Male</option>
 							<option value="Female">Female</option>
-						</select>
+						</sf:select>
+						<sf:errors path="gender" cssClass="text-danger"></sf:errors>
 					</app:form-group>
 					<!-- Date of Birth  -->
 					<app:form-group cssClass="col-4" label="Date of Birth">
-						<input type="date" class="form-control" />
+						<sf:input path="dateOfBirth"  type="date" class="form-control" />
+						<sf:errors path="dateOfBirth" cssClass="text-danger"></sf:errors>
 					</app:form-group>
 				</div>
 				<!-- Contact Info -->
 				<div class="row">
 					<!-- Phone -->
 					<app:form-group cssClass="col-4" label="Phone">
-						<input type="text" class="form-control"
+						<sf:input path="phone" type="text" class="form-control"
 							placeholder="Enter phone number" />
+						<sf:errors path="phone" cssClass="text-danger"></sf:errors>
 					</app:form-group>
 					<!-- Mail -->
 					<app:form-group cssClass="col-8" label="Mail">
-						<input type="email" class="form-control"
+						<sf:input path="mail" type="email" class="form-control"
 							placeholder="Enter mail address" />
+						<sf:errors path="mail" cssClass="text-danger"></sf:errors>
 					</app:form-group>
 				</div>
 				<div class="row">
 					<!-- Regions -->
-					<app:form-group cssClass="col" label="Regions">
-						<select name="" id="" class="form-select">
-							<option value="">Select Regions</option>
-						</select>
+					<app:form-group cssClass="col" label="Region">
+						<sf:select path="region" data-fech-api="" id="region" class="form-select">
+							<option value="">Select One</option>
+						</sf:select>
+						<sf:errors path="region" cssClass="text-danger"></sf:errors>
 					</app:form-group>
 					<!-- Districts -->
-					<app:form-group cssClass="col" label="Districts">
-						<select name="" id="" class="form-select">
-							<option value="">Select Districts</option>
-						</select>
+					<app:form-group cssClass="col" label="District">
+						<sf:select path="district" id="district" class="form-select">
+							<option value="">Select One</option>
+						</sf:select>
+						<sf:errors path="district" cssClass="text-danger"></sf:errors>
 					</app:form-group>
 					<!-- Townships -->
-					<app:form-group cssClass="col" label="Townships">
-						<select name="" id="" class="form-select">
+					<app:form-group cssClass="col" label="Township">
+						<sf:select path="township" id="township" class="form-select">
 							<option value="">Select Townships</option>
-						</select>
+						</sf:select>
+						<sf:errors path="township" cssClass="text-danger"></sf:errors>
 					</app:form-group>
 				</div>
 				<!-- Address -->
 				<app:form-group cssClass="col" label="Address">
-					<textarea rows="3" cols="60" class="form-control"></textarea>
+					<sf:textarea path="address" rows="3" cols="60" class="form-control"></sf:textarea>
+					<sf:errors path="address" cssClass="text-danger"></sf:errors>
 				</app:form-group>
-				<button class="btn btn-danger">
+				<button type="submit" class="btn btn-danger">
 					<i class="bi bi-save"></i>Save Profile
 				</button>
-			</form>
+			</sf:form>
 		</div>
 	</div>
 

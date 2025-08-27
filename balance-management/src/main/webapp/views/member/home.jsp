@@ -31,12 +31,14 @@
 						alt="Profile Image" class="profile-image" />
 
 					<ul class="list-group rounded-0">
-						<li class="list-group-item"><i class="bi bi-person me-1"></i>Thidar
-							Aung</li>
-						<li class="list-group-item"><i class="bi bi-phone me-1"></i>070-8950-4055</li>
-						<li class="list-group-item"><i class="bi bi-envelope-at me-1"></i>thidar@gmail.com</li>
-						<li class="list-group-item"><i class="bi bi-map me-1"></i>N0
-							20/1F,Yadanar Myaing Street, Kamayut 1 Quarter, Kamayut, Yangon</li>
+						<li class="list-group-item"><i class="bi bi-person me-1"></i>
+							${profile.name() }</li>
+						<li class="list-group-item"><i class="bi bi-phone me-1"></i>
+							${profile.phone() ne null and profile.phone() ne '' ? profile.phone() : 'Un Defined' }</li>
+						<li class="list-group-item"><i class="bi bi-envelope-at me-1"></i>${profile.mail() }</li>
+						<li class="list-group-item"><i class="bi bi-map me-1"></i>
+							${profile.address() ne null and profile.address() ne '' ? profile.address() : 'Un Defined' }
+						</li>
 					</ul>
 				</div>
 			</div>
