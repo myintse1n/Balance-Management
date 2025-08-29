@@ -4,6 +4,8 @@ import com.jdc.online.balances.model.entity.consts.Role;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import lombok.Data;
 
@@ -18,6 +20,7 @@ public class Account {
 	private String password;
 
 	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
 	private Role role;
 
 	private boolean active;

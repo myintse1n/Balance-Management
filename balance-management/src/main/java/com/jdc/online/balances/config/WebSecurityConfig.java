@@ -15,16 +15,20 @@ import com.jdc.online.balances.security.LoginSuccessHandler;
 @EnableMethodSecurity
 public class WebSecurityConfig  {
 	
+	@SuppressWarnings("removal")
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		
 		//Request Authorization
 		http.authorizeHttpRequests(req -> {
-			req.requestMatchers("/","/signup","/signin","/resources/**").permitAll();
+			req.requestMatchers("/","/signup","/signin","/resources/**"," /h2-console/**", "/error").permitAll();
 			req.requestMatchers("/admin/**").hasAuthority(Role.Admin.name());
 			req.requestMatchers("/member/**").hasAuthority(Role.Member.name());
 			req.anyRequest().authenticated();
 		});
+		
+		http.csrf().disable(); // needed for H2 console POST
+		http.headers().frameOptions().disable(); // allow H2 console
 		
 		//Login Form
 		http.formLogin(login->{

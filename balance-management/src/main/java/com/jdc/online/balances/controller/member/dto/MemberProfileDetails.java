@@ -16,7 +16,8 @@ public record MemberProfileDetails(
 		String mail,
 		String address,
 		LocalDateTime registeredAt,
-		LocalDateTime lastAccess
+		LocalDateTime lastAccess,
+		String profileImage
 		) {
 	
 	public static MemberProfileDetails from(Member member) {
@@ -41,6 +42,7 @@ public record MemberProfileDetails(
 				.phone(member.getPhone())
 				.mail(member.getEmail())
 				.address(address)
+				.profileImage(Optional.ofNullable(member).map(a -> a.getProfileImage()).orElse("default-profile.png"))
 				.build();
 	}
 	
@@ -52,6 +54,7 @@ public record MemberProfileDetails(
 		private String address;
 		private LocalDateTime registeredAt;
 		private LocalDateTime lastAccess;
+		private String profileImage;
 		
 		public Builder id(long id) {
 			this.id = id;
@@ -88,8 +91,13 @@ public record MemberProfileDetails(
 			return this;
 		}
 		
+		public Builder profileImage(String profileImage) {
+			this.profileImage = profileImage;
+			return this;
+		}
+		
 		public MemberProfileDetails build() {
-			return new MemberProfileDetails(id, name, phone, mail, address, registeredAt, lastAccess);
+			return new MemberProfileDetails(id, name, phone, mail, address, registeredAt, lastAccess,profileImage);
 		}
 	}
 

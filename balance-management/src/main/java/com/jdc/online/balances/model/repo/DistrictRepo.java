@@ -7,6 +7,6 @@ import com.jdc.online.balances.model.entity.District;
 
 public interface DistrictRepo extends BaseRepository<District, Integer> {
 
-	List<District> findDistrictByRegionId(int regionId);
+	List<District> findByRegionId(int regionId);
 
 }

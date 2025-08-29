@@ -7,6 +7,6 @@ import com.jdc.online.balances.model.entity.Township;
 
 public interface TownshipRepo extends BaseRepository<Township, Integer>{
 
-	List<Township> findTownshipByDistrictId(int townshipId);
+	List<Township> findByDistrictId(int townshipId);
 
 }

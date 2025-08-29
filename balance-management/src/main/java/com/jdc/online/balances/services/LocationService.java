@@ -1,5 +1,7 @@
 package com.jdc.online.balances.services;
 
+import static com.jdc.online.balances.utils.EntityOperations.safeCall;
+
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -23,16 +25,34 @@ public class LocationService {
 	private final DistrictRepo districtRepo;
 	private final RegionRepo regionRepo;
 	
-	public List<Region> getAllRegions() {
+	public List<Region> findAllRegions() {
 		return regionRepo.findAll();
 	}
 	
 	public List<District> findDistrictsByRegion(int regionId){
-		return districtRepo.findDistrictByRegionId(regionId);
+		return districtRepo.findByRegionId(regionId);
 	}
 	
 	public List<Township> findTownshipByDistrict(int townshipId){
-		return townshipRepo.findTownshipByDistrictId(townshipId);
+		return townshipRepo.findByDistrictId(townshipId);
+	}
+	
+	public List<District> getDistrictsForSelectedTownship(Integer townshipId){
+		if(null != townshipId) {
+			var township = safeCall(townshipRepo.findById(townshipId), "Township", "township id", townshipId);
+			var regionId = township.getDistrict().getRegion().getId();
+			return districtRepo.findByRegionId(regionId);
+		}
+		return null;
+	}	
+	
+	public List<Township> getTownshipsForSelectedTownship(Integer townshipId){
+		if(null != townshipId) {
+			var township =  safeCall(townshipRepo.findById(townshipId), "township", "township id", townshipId);
+			var districtId = township.getDistrict().getId();
+			return townshipRepo.findByDistrictId(districtId);
+		}
+		return null;
 	}
 	
 	

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <app:layout-member title="PROFILE">
 
@@ -11,7 +12,7 @@
 
 		<div class="col-3">
 			<!-- Profile Photo -->
-			<img src="${root }/resources/images/profile-img.jpg"
+			<img src="${root }/resources/images/${form.profileImage}"
 				alt="Profile Photo" class="img-fluid profile-image img-thumbnail" />
 
 			<form id="profilePhotoForm" action="${root }/member/profile/photo"
@@ -38,15 +39,15 @@
 					<app:form-group cssClass="col-4" label="Gender">
 						<sf:select path="gender" class="form-select">
 							<option value="">Select Gender</option>
-							<option value="Male">Male</option>
-							<option value="Female">Female</option>
+							<option value="Male" ${form.gender  eq 'Male' ? 'selected' : ''}>Male</option>
+							<option value="Female" ${form.gender  eq 'Female' ? 'selected' : ''}>Female</option>
 						</sf:select>
 						<sf:errors path="gender" cssClass="text-danger"></sf:errors>
 					</app:form-group>
 					<!-- Date of Birth  -->
 					<app:form-group cssClass="col-4" label="Date of Birth">
-						<sf:input path="dateOfBirth"  type="date" class="form-control" />
-						<sf:errors path="dateOfBirth" cssClass="text-danger"></sf:errors>
+						<sf:input path="dob"  type="date" class="form-control" />
+						<sf:errors path="dob" cssClass="text-danger"></sf:errors>
 					</app:form-group>
 				</div>
 				<!-- Contact Info -->
@@ -67,22 +68,31 @@
 				<div class="row">
 					<!-- Regions -->
 					<app:form-group cssClass="col" label="Region">
-						<sf:select path="region" data-fech-api="" id="region" class="form-select">
+						<sf:select path="region" id="region" data-fetch-api="${root }/member/location/api/district" class="form-select">
 							<option value="">Select One</option>
+							<c:forEach items="${regions }" var="item">
+								<option value="${item.id }" ${item.id eq form.region ? 'selected' : ''}>${item.name}</option>
+							</c:forEach>
 						</sf:select>
 						<sf:errors path="region" cssClass="text-danger"></sf:errors>
 					</app:form-group>
 					<!-- Districts -->
 					<app:form-group cssClass="col" label="District">
-						<sf:select path="district" id="district" class="form-select">
+						<sf:select path="district" id="district" data-fetch-api="${root }/member/location/api/township" class="form-select">
 							<option value="">Select One</option>
+							<c:forEach items="${districts }" var="item">
+								<option value="${item.id }" ${item.id eq form.district ? 'selected' : ''}>${item.name}</option>
+							</c:forEach>
 						</sf:select>
 						<sf:errors path="district" cssClass="text-danger"></sf:errors>
 					</app:form-group>
 					<!-- Townships -->
 					<app:form-group cssClass="col" label="Township">
 						<sf:select path="township" id="township" class="form-select">
-							<option value="">Select Townships</option>
+							<option value="">Select One</option>
+							<c:forEach items="${townships }" var="item">
+								<option value="${item.id }" ${item.id eq form.township ? 'selected' : ''}>${item.name}</option>
+							</c:forEach>
 						</sf:select>
 						<sf:errors path="township" cssClass="text-danger"></sf:errors>
 					</app:form-group>
@@ -100,4 +110,5 @@
 	</div>
 
 	<script src="${root }/resources/js/profile-edit.js"></script>
+	<script src="${root }/resources/js/member-location.js"></script>
 </app:layout-member>

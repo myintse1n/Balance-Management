@@ -27,7 +27,7 @@
 					<a href="${root }/member/profile"><i class="bi bi-pencil"></i></a>
 				</div>
 				<div class="card-body p-0">
-					<img src="${root }/resources/images/profile-img.jpg"
+					<img src="${root }/resources/images/${profile.profileImage()}"
 						alt="Profile Image" class="profile-image" />
 
 					<ul class="list-group rounded-0">

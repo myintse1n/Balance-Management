@@ -3,6 +3,8 @@ package com.jdc.online.balances.controller.member.dto;
 import java.time.LocalDate;
 import java.util.Optional;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.jdc.online.balances.model.entity.District;
 import com.jdc.online.balances.model.entity.Member;
 import com.jdc.online.balances.model.entity.Region;
@@ -22,7 +24,8 @@ public class ProfileEditForm {
 	@NotNull(message = "Please select gender.")
 	private Gender gender;
 	@NotNull(message = "Please select date of birth.")
-	private LocalDate dateOfBirth;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate dob;
 	@NotBlank(message = "Please enter phone number.")
 	private String phone;
 	@NotNull(message = "Please enter mail address.")
@@ -42,7 +45,7 @@ public class ProfileEditForm {
 		return ProfileEditForm.builder()
 				.name(member.getName())
 				.gender(member.getGender())
-				.dateOfBirth(member.getDob())
+				.dob(member.getDob())
 				.phone(member.getPhone())
 				.mail(member.getEmail())
 				.region(Optional.ofNullable(member.getTownship())
@@ -59,7 +62,7 @@ public class ProfileEditForm {
 						.orElse(null))
 				.address(member.getAddress())
 				.profileImage(Optional.ofNullable(member.getProfileImage())
-						.orElse("defual-profile.png"))
+						.orElse("default-profile.png"))
 				.build();
 	}
 
